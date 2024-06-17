@@ -183,7 +183,7 @@ keybinds {
     }
     shared_except "locked" {
         bind "Ctrl f" {
-            LaunchOrFocusPlugin "https://github.com/karimould/zellij-forgot/releases/download/0.4.0/zellij_forgot.wasm" {
+            LaunchOrFocusPlugin "https://github.com/karimould/zellij-forgot/releases/lates/download/zellij_forgot.wasm" {
                 "lock"                  "ctrl + g"
                 "unlock"                "ctrl + g"
                 "new pane"              "ctrl + p + n"
