@@ -7,7 +7,7 @@ abbr ll "eza --icons=always --color=always -lbgh"
 abbr la "eza --icons=always --color=always -labgh"
 
 abbr vi nvim
-abbr svi "sudo nvim"
+abbr svi "sudo -Es nvim"
 abbr grep "rg --color auto"
 abbr catb bat
 abbr cat "bat -pp"
