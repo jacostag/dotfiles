@@ -22,3 +22,5 @@ abbr scrcpyAudio 'scrcpy --tcpip=192.168.86.26 --no-video'
 abbr scrcpyCtrl 'scrcpy --tcpip=192.168.86.26 --turn-screen-off'
 
 abbr sshgem 'ssh kiosk@gemini.circumlunar.space'
+
+abbr vichez 'nvim $HOME/.local/share/chezmoi/'
