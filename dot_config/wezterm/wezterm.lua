@@ -18,6 +18,7 @@ config.initial_rows = 52
 config.initial_cols = 200
 config.window_close_confirmation = "NeverPrompt"
 config.warn_about_missing_glyphs = false
+config.enable_wayland = true
 
 local act = wezterm.action
 
