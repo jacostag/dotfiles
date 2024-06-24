@@ -27,3 +27,7 @@ abbr scrcpyCtrl 'scrcpy --tcpip=192.168.86.26 --turn-screen-off'
 abbr sshgem 'ssh kiosk@gemini.circumlunar.space'
 
 abbr vichez 'nvim $HOME/.local/share/chezmoi/'
+
+abbr u2mac '/usr/bin/ddcutil --noverify setvcp xe7 xff00' #switch to mac display/auto-usb
+
+abbr s2mac '/usr/bin/ddcutil setvcp 60 0x1b' #switch usb to mac
