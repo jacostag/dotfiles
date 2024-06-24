@@ -14,8 +14,6 @@ abbr cat "bat -pp"
 abbr ff "fd --type file"
 abbr fd "fd --type dir"
 
-abbr shoot "procs | fzf | awk '{print \$1}' | xargs kill -9"
-
 abbr md "fzf --query .md| xargs glow -p"
 abbr vmd "fzf --query .md --preview=\"glow {-1}\" --bind 'enter:become(nvim {+}),ctrl-y:execute-silent(echo {} | wl-copy -n)+abort'"
 

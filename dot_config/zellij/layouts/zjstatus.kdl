@@ -19,6 +19,7 @@ layout {
 
             mode_normal  "#[bg=blue] "
             mode_tmux    "#[bg=#ffc387] "
+            mode_locked "#[fg=#FF00D9,bold] {name} "
 
             tab_normal   "#[fg=#6C7086] {name} "
             tab_active   "#[fg=#9399B2,bold,italic] {name} "
