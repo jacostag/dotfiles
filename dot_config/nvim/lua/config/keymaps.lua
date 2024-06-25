@@ -9,4 +9,3 @@ vim.keymap.set(
 )
 vim.keymap.set("n", "Y", "y$", { desc = "Yank to end of line" })
 vim.keymap.set("n", "<leader>?", "<cmd>Telescope keymaps<CR>", { desc = "Show keymaps" })
-vim.keymap.set("n", ";", ":", { desc = "Command mode alternative" })
