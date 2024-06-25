@@ -18,7 +18,6 @@ layout {
             hide_frame_for_single_pane "true"
 
             mode_normal  "#[bg=blue] "
-            mode_tmux    "#[bg=#ffc387] "
             mode_locked "#[fg=#FF00D9,bold] {name} "
 
             tab_normal   "#[fg=#6C7086] {name} "
@@ -32,6 +31,12 @@ layout {
             datetime        "#[fg=#6C7086,bold] {format} "
             datetime_format "%A, %d %b %Y %H:%M"
             datetime_timezone "America/New_York"
+
+            notification_format_unread           "#[fg=#89B4FA,bg=#181825,blink]  #[fg=#89B4FA,bg=#181825] {message} "
+            notification_format_no_notifications "#[fg=#89B4FA,bg=#181825,dim]   "
+            notification_show_interval           "10"
+
+            session "format_center"
         }
     }
 }
