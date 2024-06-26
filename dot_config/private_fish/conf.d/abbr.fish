@@ -1,6 +1,6 @@
 abbr rm "rm -I"
-abbr cp "cp -i"
-abbr mv "mv -i"
+abbr cp "cp -nvi"
+abbr mv "mv -nvi"
 abbr mkdir "mkdir -p"
 abbr ls "eza --icons=always --color=always"
 abbr ll "eza --icons=always --color=always -lbgh"

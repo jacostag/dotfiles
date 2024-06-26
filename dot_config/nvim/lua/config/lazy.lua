@@ -44,3 +44,5 @@ require("lazy").setup({
     },
   },
 })
+require("config.commands")
+require("config.sudo_write")
