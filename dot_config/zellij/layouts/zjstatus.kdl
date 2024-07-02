@@ -1,11 +1,7 @@
-
 layout {
-    pane split_direction="vertical" {
-        pane
-    }
 
-    pane size=1 borderless=true {
-        plugin location="https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm" {
+  pane size=1 borderless=true {
+        plugin location="file:/home/gosz/.config/zellij/plugins/zjstatus.wasm" {
             format_left  "{mode} #[fg=#89B4FA,bold]{session} {tabs}"
             format_right "{command_git_branch} {datetime}"
             format_space ""
@@ -21,7 +17,7 @@ layout {
             mode_locked "#[fg=#FF00D9,bold] {name} "
 
             tab_normal   "#[fg=#6C7086] {name} "
-            tab_active   "#[fg=#9399B2,bold,italic] {name} "
+            tab_active   "#[fg=#6C7986,bold,italic,bg=blue] {name} "
 
             command_git_branch_command     "git rev-parse --abbrev-ref HEAD"
             command_git_branch_format      "#[fg=blue] {stdout} "
@@ -39,4 +35,8 @@ layout {
             session "format_center"
         }
     }
+
+  pane split_direction="vertical" {
+    pane
+  }
 }
