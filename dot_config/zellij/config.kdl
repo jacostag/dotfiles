@@ -244,8 +244,7 @@ plugins {
     status-bar { path "status-bar"; }
     strider { path "strider"; }
     compact-bar { path "compact-bar"; }
-    //session-manager { path "session-manager"; } older version
-    //not sure if is needed it in here, because is getting load on the layout
+    session-manager { path "session-manager"; }
     zjstatus { path "https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm"; }
 }
 
@@ -325,6 +324,8 @@ theme "catppuccin-mocha"
 //
 //default_layout "compact"
 default_layout "zjstatus"
+//default_layout "default"
+
 
 // Choose the mode that zellij uses when starting up.
 // Default: normal
