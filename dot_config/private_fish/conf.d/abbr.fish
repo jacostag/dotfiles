@@ -11,13 +11,9 @@ abbr svi "sudo -Es nvim"
 abbr grep "rg --color auto"
 abbr catb bat
 abbr cat "bat -pp"
-abbr ff "fd --type file"
-abbr fd "fd --type dir"
 
 abbr md "fzf --query .md| xargs glow -p"
 abbr vmd "fzf --query .md --preview=\"glow {-1}\" --bind 'enter:become(nvim {+}),ctrl-y:execute-silent(echo {} | wl-copy -n)+abort'"
-
-abbr fs "fzf --multi --preview=\"bat --color=always {}\" --bind 'enter:become(nvim {+}),ctrl-y:execute-silent(echo {} | wl-copy -n)+abort'"
 
 abbr scrcpyAudio 'scrcpy --tcpip=192.168.86.26 --no-video'
 abbr scrcpyCtrl 'scrcpy --tcpip=192.168.86.26 --turn-screen-off'
