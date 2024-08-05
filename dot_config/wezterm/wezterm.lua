@@ -19,12 +19,19 @@ config.initial_cols = 200
 config.window_close_confirmation = "NeverPrompt"
 config.warn_about_missing_glyphs = false
 config.enable_wayland = true
+config.window_decorations = "RESIZE"
+config.window_background_opacity = 0.8
+config.text_background_opacity = 0.9
+
+enable_kitty_keyboard = true
 
 local act = wezterm.action
 
 config.keys = {
-	{ key = "C", mods = "CTRL", action = act.CopyTo("Clipboard") },
-	{ key = "V", mods = "CTRL", action = act.PasteFrom("Clipboard") },
+	-- { key = "C", mods = "CTRL", action = act.CopyTo("Clipboard") },
+	-- { key = "V", mods = "CTRL", action = act.PasteFrom("Clipboard") },
+	{ key = "c", mods = "CMD", action = act.CopyTo("Clipboard") },
+	{ key = "v", mods = "CMD", action = act.PasteFrom("Clipboard") },
 	{ key = "[", mods = "CMD", action = act.ActivateTabRelative(-1) },
 	{ key = "]", mods = "CMD", action = act.ActivateTabRelative(1) },
 	{ key = "t", mods = "CMD", action = act.SpawnTab("CurrentPaneDomain") },
@@ -50,26 +57,28 @@ config.mouse_bindings = {
 		action = act.Nop,
 	},
 }
-wezterm.on("user-var-changed", function(window, pane, name, value)
-	local overrides = window:get_config_overrides() or {}
-	if name == "ZEN_MODE" then
-		local incremental = value:find("+")
-		local number_value = tonumber(value)
-		if incremental ~= nil then
-			while number_value > 0 do
-				window:perform_action(wezterm.action.IncreaseFontSize, pane)
-				number_value = number_value - 1
-			end
-			overrides.enable_tab_bar = false
-		elseif number_value < 0 then
-			window:perform_action(wezterm.action.ResetFontSize, pane)
-			overrides.font_size = nil
-			overrides.enable_tab_bar = true
-		else
-			overrides.font_size = number_value
-			overrides.enable_tab_bar = false
-		end
-	end
-	window:set_config_overrides(overrides)
-end)
+
+-- wezterm.on("user-var-changed", function(window, pane, name, value)
+-- 	local overrides = window:get_config_overrides() or {}
+-- 	if name == "ZEN_MODE" then
+-- 		local incremental = value:find("+")
+-- 		local number_value = tonumber(value)
+-- 		if incremental ~= nil then
+-- 			while number_value > 0 do
+-- 				window:perform_action(wezterm.action.IncreaseFontSize, pane)
+-- 				number_value = number_value - 1
+-- 			end
+-- 			overrides.enable_tab_bar = false
+-- 		elseif number_value < 0 then
+-- 			window:perform_action(wezterm.action.ResetFontSize, pane)
+-- 			overrides.font_size = nil
+-- 			overrides.enable_tab_bar = true
+-- 		else
+-- 			overrides.font_size = number_value
+-- 			overrides.enable_tab_bar = false
+-- 		end
+-- 	end
+-- 	window:set_config_overrides(overrides)
+-- end)
+
 return config
