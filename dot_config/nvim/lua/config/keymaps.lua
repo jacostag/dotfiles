@@ -8,15 +8,12 @@ vim.keymap.set(
   { noremap = true, silent = true, desc = "Resume telescope" }
 )
 vim.keymap.set("n", "Y", "y$", { desc = "Yank to end of line" })
+vim.keymap.set("n", "<leader>?", "<cmd>Telescope keymaps<CR>", { desc = "Show keymaps" })
 vim.keymap.set(
   "n",
-  "<leader>?",
-  "<cmd>Telescope keymaps<CR>",
-  { desc = "Show keymaps" }
-)
-vim.keymap.set(
-  "n",
-  "<leader>tm",
+  "<leader>om",
   "<cmd>!zellij run -d right -- glow -p % <CR>",
-  { desc = "Preview markdown on new pane" }
+  { desc = "Preview [m]arkdown on new pane" }
 )
+
+vim.keymap.set("x", "<leader>te", [["_dP]], { desc = "Yank and paste properly" })
