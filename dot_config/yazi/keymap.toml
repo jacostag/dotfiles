@@ -4,6 +4,12 @@
 
 [manager]
 
+[[manager.prepend_keymap]]
+on = "<C-n>"
+run = '''
+	shell 'dragon -x -T "$1"' --confirm
+'''
+
 keymap = [
   { on = "<Esc>", run = "escape", desc = "Exit visual mode, clear selected, or cancel search" },
   { on = "<C-[>", run = "escape", desc = "Exit visual mode, clear selected, or cancel search" },
