@@ -9,6 +9,7 @@ on = "<C-n>"
 run = '''
 	shell 'dragon -x -T "$1"' --confirm
 '''
+
 [[manager.prepend_keymap]]
 on = "y"
 run = [
@@ -17,6 +18,11 @@ run = [
 ''',
   "yank",
 ]
+
+[[manager.prepend_keymap]]
+on = "<C-s>"
+run = 'shell "$SHELL" --block --confirm'
+desc = "Open shell here"
 
 keymap = [
   { on = "<Esc>", run = "escape", desc = "Exit visual mode, clear selected, or cancel search" },
