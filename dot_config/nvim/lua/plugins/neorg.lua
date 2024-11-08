@@ -5,10 +5,20 @@ return {
     { "nvim-neorg/neorg-telescope" },
     { "bottd/neorg-worklog" },
     { "benlubas/neorg-interim-ls" },
+    { "juniorsundar/neorg-extras" },
+    { "benlubas/neorg-se" },
   },
-  -- ft = "norg",
+  ft = "norg",
+  cmd = { "Neorg" },
   opts = {
     load = {
+      ["external.agenda"] = {}, -- OPTIONAL if you don't want the agenda features
+      ["external.roam"] = {}, -- OPTIONAL if you don't want the roam features
+      ["external.many-mans"] = {
+        config = {
+          treesitter_fold = true, -- Set to 'false' if your package manager is currently NOT lazy.nvim
+        },
+      },
       ["core.defaults"] = {},
       ["core.autocommands"] = {},
       ["core.clipboard"] = {},
@@ -100,7 +110,7 @@ return {
       ["core.esupports.hop"] = {},
       ["core.esupports.indent"] = {},
       ["external.worklog"] = {
-        default_workspace_title = "notes",
+        config = { default_workspace_title = "notes" },
       },
       ["external.interim-ls"] = {},
       ["core.completion"] = {
