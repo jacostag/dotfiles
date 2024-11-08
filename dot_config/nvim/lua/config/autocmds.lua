@@ -64,3 +64,40 @@ au("BufEnter", {
   pattern = "~/scratch.scratch",
   command = "setlocal noswapfile | setlocal buftype=nofile | setlocal bufhidden=hide",
 })
+
+-- wrap and check for spell in norg and neorg filetypes
+au("FileType", {
+  pattern = { "norg", "neorg" },
+  callback = function()
+    vim.opt_local.wrap = true
+    vim.opt_local.spell = true
+    -- local client = vim.lsp.start({
+    --   name = "harper_ls",
+    --   cmd = { "harper-ls", "--stdio" },
+    --})
+    -- vim.lsp.buf_attach_client(0, client)
+  end,
+})
+
+--the idea is to sync system and nvim clipboard only when is gaining or loosing focus
+-- vim.api.nvim_create_autocmd({ "FocusGained" }, {
+--   group = vim.api.nvim_create_augroup(
+--     "clipboard-sync-to-register",
+--     { clear = true }
+--   ),
+--   callback = function()
+--     vim.cmd(':let @+=@"')
+--     vim.notify("Copy from Clipboard to Register", "info")
+--   end,
+-- })
+--
+-- vim.api.nvim_create_autocmd({ "FocusLost" }, {
+--   group = vim.api.nvim_create_augroup(
+--     "register-sync-to-clipboard",
+--     { clear = true }
+--   ),
+--   callback = function()
+--     vim.cmd(':let @"=@+')
+--     vim.notify("Copy from Register to Clipboard", "info")
+--   end,
+-- })
