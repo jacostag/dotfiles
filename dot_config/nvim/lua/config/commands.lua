@@ -48,4 +48,5 @@ vim.api.nvim_create_user_command("Sc", function()
     },
   })
   vim.cmd("vsplit ~/.scratch.scratch")
+  vim.cmd("setlocal buftype=nofile bufhidden=hide noswapfile")
 end, { desc = "Create and set a scratchpad" })
