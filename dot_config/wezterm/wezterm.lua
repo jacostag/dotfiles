@@ -22,8 +22,10 @@ config.enable_wayland = true
 config.window_decorations = "RESIZE"
 config.window_background_opacity = 0.8
 config.text_background_opacity = 0.9
+config.quick_select_alphabet = "colemak"
 
-enable_kitty_keyboard = true
+config.enable_kitty_graphics = true
+config.max_fps = 60
 
 local act = wezterm.action
 
@@ -37,6 +39,7 @@ config.keys = {
 	{ key = "t", mods = "CMD", action = act.SpawnTab("CurrentPaneDomain") },
 	{ key = "q", mods = "CMD", action = wezterm.action.QuitApplication },
 	{ key = "y", mods = "CMD", action = wezterm.action.ActivateLastTab },
+	{ key = "e", mods = "CMD", action = wezterm.action.QuickSelect },
 }
 
 config.mouse_bindings = {
@@ -55,6 +58,18 @@ config.mouse_bindings = {
 		event = { Down = { streak = 1, button = "Left" } },
 		mods = "CTRL",
 		action = act.Nop,
+	},
+	{
+		event = { Down = { streak = 1, button = { WheelUp = 1 } } },
+		mods = "CTRL",
+		action = act.IncreaseFontSize,
+	},
+
+	-- Scrolling down while holding CTRL decreases the font size
+	{
+		event = { Down = { streak = 1, button = { WheelDown = 1 } } },
+		mods = "CTRL",
+		action = act.DecreaseFontSize,
 	},
 }
 
