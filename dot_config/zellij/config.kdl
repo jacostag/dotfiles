@@ -35,7 +35,8 @@ keybinds {
         bind "z" { TogglePaneFrames; SwitchToMode "Normal"; }
         bind "w" { ToggleFloatingPanes; SwitchToMode "Normal"; }
         bind "e" { TogglePaneEmbedOrFloating; SwitchToMode "Normal"; }
-        bind "c" { SwitchToMode "RenamePane"; PaneNameInput 0;}
+        bind "c" { SwitchToMode "RenamePane"; PaneNameInput 0; }
+        bind "0" { Clear; SwitchToMode "Normal"; }
     }
     move {
         bind "Ctrl h" { SwitchToMode "Normal"; }
@@ -80,7 +81,7 @@ keybinds {
         bind "d" { HalfPageScrollDown; }
         bind "u" { HalfPageScrollUp; }
         // uncomment this and adjust key if using copy_on_select=false
-        bind "Alt c" { Copy; }
+        // bind "Alt c" { Copy; }
     }
     search {
         bind "Ctrl s" { SwitchToMode "Normal"; }
@@ -226,13 +227,15 @@ keybinds {
                 "open session manager"  "ctrl + o + w"
                 "quit zellij"           "ctrl + q"
                 "browse panes"          "ctrl + y"
+                "clear scrollbuffer"    "ctrl + p + 0"
                 floating true
             }
         }
     }
     shared_except "locked" {
       bind "Ctrl y" {
-        LaunchOrFocusPlugin "https://github.com/rvcas/room/releases/latest/download/room.wasm" {
+        //LaunchOrFocusPlugin "https://github.com/rvcas/room/releases/latest/download/room.wasm" {
+        LaunchOrFocusPlugin "file:/home/gosz/.config/zellij/plugins/room.wasm" {
             floating true
             ignore_case true
         }
@@ -240,12 +243,13 @@ keybinds {
     }
 }
 plugins {
-    tab-bar { path "tab-bar"; }
-    status-bar { path "status-bar"; }
-    strider { path "strider"; }
-    compact-bar { path "compact-bar"; }
-    session-manager { path "session-manager"; }
-    zjstatus { path "https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm"; }
+    tab-bar location="zellij:tab-bar"
+    status-bar location="zellij:status-bar"
+    strider location="zellij:strider"
+    compact-bar location="zellij:compact-bar"
+    session-manager location="zellij:session-manager"
+    configuration location="zellij:configuration"
+    zjstatus { path "https://github.com/dj95/zjstatus/releases/download/v0.18.1/zjstatus.wasm"; }
 }
 
 // Choose what to do when zellij receives SIGTERM, SIGINT, SIGQUIT or SIGHUP
@@ -323,7 +327,8 @@ theme "catppuccin-mocha"
 //Default: "zjstatus.kdl"
 //
 //default_layout "compact"
-default_layout "zjstatus"
+default_layout "zjstatus2"
+//default_layout "zjstatus"
 //default_layout "default"
 
 
@@ -398,3 +403,4 @@ layout_dir "/home/gosz/.config/zellij/layouts/"
 // Default: true
 //
 // styled_underlines false
+support_kitty_keyboard_protocol true
