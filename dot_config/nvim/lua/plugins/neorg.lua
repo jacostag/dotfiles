@@ -5,8 +5,11 @@ return {
     { "nvim-neorg/neorg-telescope" },
     { "bottd/neorg-worklog" },
     { "benlubas/neorg-interim-ls" },
+    -- { "benlubas/neorg-query" },
     { "juniorsundar/neorg-extras" },
     { "benlubas/neorg-se" },
+    { "nvim-neorg/lua-utils.nvim" },
+    { "pysan3/pathlib.nvim" },
   },
   ft = "norg",
   cmd = { "Neorg" },
@@ -112,6 +115,14 @@ return {
       ["external.worklog"] = {
         config = { default_workspace_title = "notes" },
       },
+      -- ["external.query"] = {
+      --   -- Populate the database. Indexing happens on a separate thread, so doesn't block
+      --   -- neovim. We also
+      --   index_on_launch = true,
+      --
+      --   -- Update the db entry when a file is written
+      --   update_on_change = true,
+      -- },
       ["external.interim-ls"] = {},
       ["core.completion"] = {
         config = { engine = { module_name = "external.lsp-completion" } },
