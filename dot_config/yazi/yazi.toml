@@ -115,8 +115,8 @@ image_bound = [0, 0]
 suppress_preload = false
 
 [plugin]
-
-prepend_previewers = [{ name = "*.md", run = "glow" }]
+prepend_previewers = [{ name = "*.md", run = "mdcat" }]
+#prepend_previewers = [{ name = "*.md", run = "glow" }]
 
 fetchers = [
   # Mimetype
@@ -167,7 +167,8 @@ cd_origin = "top-center"
 cd_offset = [0, 2, 50, 3]
 
 # create
-create_title = "Create:"
+#create_title = "Create:"
+create_title = ["Create:", "Create (dir):"]
 create_origin = "top-center"
 create_offset = [0, 2, 50, 3]
 
