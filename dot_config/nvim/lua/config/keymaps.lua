@@ -8,12 +8,12 @@ vim.keymap.set(
   { noremap = true, silent = true, desc = "Resume telescope" }
 )
 vim.keymap.set("n", "Y", "y$", { desc = "Yank to end of line" })
-vim.keymap.set(
-  "n",
-  "<leader>?",
-  "<cmd>Telescope keymaps<CR>",
-  { desc = "Show keymaps" }
-)
+-- vim.keymap.set(
+--   "n",
+--   "<leader>?",
+--   "<cmd>Telescope keymaps<CR>",
+--   { desc = "Show keymaps" }
+-- )
 vim.keymap.set(
   "n",
   "<leader>om",
