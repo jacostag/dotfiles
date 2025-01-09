@@ -5,6 +5,7 @@ set -gx PAGER moar
 set -g fish_key_bindings fish_vi_key_bindings
 set -gx MANPAGER "nvim +Man!"
 set -gx SHELL /usr/bin/fish
+set -gx ATUIN_NOBIND true
 
 set -x CLOUDSDK_PYTHON_SITEPACKAGES 1
 
@@ -17,6 +18,5 @@ if status is-interactive
     --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
     --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
     fzf_key_bindings
-    set -gx ATUIN_NOBIND true
     atuin init fish | source
 end
