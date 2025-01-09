@@ -5,6 +5,9 @@ function fish_prompt --description 'Write out the prompt'
     set -l cwd_color (set_color $fish_color_cwd)
     set -l vcs_color (set_color brpurple)
     set -l prompt_status ""
+    #tput cup $COLUMNS 0
+    #yes " " | head -n 100
+
 
     # Since we display the prompt on a new line allow the directory names to be longer.
     set -q fish_prompt_pwd_dir_length
