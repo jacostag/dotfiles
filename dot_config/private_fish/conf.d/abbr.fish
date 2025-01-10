@@ -15,9 +15,6 @@ abbr cle "yes ' ' | head -n 100"
 
 abbr sed "sad --pager 'delta -s'"
 
-#abbr tvsedp "sd -p that this 'tv'" I think this should be used as function
-# abbr tvsed "sd that this tv"
-
 abbr tvmd "fd -t f .md | tv --preview 'mdcat {0}'"
 abbr tvf "fd -t f | tv --preview 'bat -p --color=always {0}'"
 abbr ntv "tv | xargs nvim"
