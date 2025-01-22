@@ -15,4 +15,5 @@ clipboard-write = allow
 clipboard-trim-trailing-spaces = true
 command = fish
 background-opacity = .8
+quit-after-last-window-closed = true
 #keybind = ctrl+shift+i=toggle_tab_overview
