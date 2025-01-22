@@ -2,10 +2,10 @@ return {
   "nvim-neorg/neorg",
   dependencies = {
     { "nvim-lua/plenary.nvim" },
-    { "nvim-neorg/neorg-telescope" },
+    --{ "nvim-neorg/neorg-telescope" },
     { "bottd/neorg-worklog" },
     { "benlubas/neorg-interim-ls" },
-    -- { "benlubas/neorg-query" },
+    --{ "benlubas/neorg-query" },
     { "juniorsundar/neorg-extras" },
     { "benlubas/neorg-se" },
     { "nvim-neorg/lua-utils.nvim" },
