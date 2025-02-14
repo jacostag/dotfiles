@@ -1,12 +1,12 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
-vim.keymap.set(
-  "n",
-  "<leader>sx",
-  require("telescope.builtin").resume,
-  { noremap = true, silent = true, desc = "Resume telescope" }
-)
+-- vim.keymap.set(
+--   "n",
+--   "<leader>sx",
+--   require("telescope.builtin").resume,
+--   { noremap = true, silent = true, desc = "Resume telescope" }
+-- )
 vim.keymap.set("n", "Y", "y$", { desc = "Yank to end of line" })
 -- vim.keymap.set(
 --   "n",
@@ -36,9 +36,33 @@ vim.keymap.set(
   "n",
   "<BS>",
   "db",
-  { desc = "Move to the first non-blank character" }
+  { desc = "Delete back until the first non-blank character" }
 )
 
-vim.keymap.set("i", "<c-y>", function()
-  require("telescope.builtin").registers()
-end, { remap = true, silent = false, desc = "paste register i insert mode" })
+-- vim.keymap.set("i", "<c-y>", function()
+--   require("telescope.builtin").registers()
+-- end, { remap = true, silent = false, desc = "paste register i insert mode" })
+
+vim.keymap.set("n", "<leader>mb", function()
+  vim.opt.spelllang = "en,es"
+  vim.cmd("echo 'Spell language set to Spanish and English'")
+end, { desc = "Spelling language Spanish and English" })
+
+vim.keymap.set("n", "<leader>me", function()
+  vim.opt.spelllang = "en"
+  vim.cmd("echo 'Spell language set to English'")
+end, { desc = "Spelling language English" })
+
+vim.keymap.set("n", "<leader>ms", function()
+  vim.opt.spelllang = "es"
+  vim.cmd("echo 'Spell language set to Spanish'")
+end, { desc = "Spelling language Spanish" })
+
+vim.keymap.set(
+  "n",
+  "<leader>mr",
+  "1z=",
+  { desc = "Auto replace first spelling option" }
+)
+
+vim.keymap.set("n", "<leader>mn", "[s", { desc = "Next spelling option" })
