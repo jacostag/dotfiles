@@ -2,11 +2,6 @@
 -- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
 -- Add any additional autocmds here
 local au = vim.api.nvim_create_autocmd
--- Auto cd to current buffer path
--- au("BufEnter", {
---   pattern = "*",
---   command = "silent! lcd %:p:h",
--- })
 
 -- Update file on external changes
 au({ "FocusGained", "TermClose", "TermLeave" }, {
@@ -25,15 +20,13 @@ au({ "FocusGained", "TermClose", "TermLeave" }, {
 -- })
 
 au("BufEnter", {
-  pattern = "*",
-  -- command = "Neotree toggle",
-  command = "Neotree close",
+  pattern = "*.md",
+  command = "set colorcolumn=80 textwidth=80 linebreak",
 })
 
 au("BufEnter", {
-  pattern = "*.md",
-  -- command = "set colorcolumn=80 textwidth=80 linebreak",
-  command = "set colorcolumn=80 textwidth=80",
+  pattern = "*",
+  command = "set colorcolumn=80",
 })
 
 au({ "TextChanged", "TextChangedI" }, {
@@ -71,11 +64,6 @@ au("FileType", {
   callback = function()
     vim.opt_local.wrap = true
     vim.opt_local.spell = true
-    -- local client = vim.lsp.start({
-    --   name = "harper_ls",
-    --   cmd = { "harper-ls", "--stdio" },
-    --})
-    -- vim.lsp.buf_attach_client(0, client)
   end,
 })
 
