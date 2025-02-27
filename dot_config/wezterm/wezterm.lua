@@ -31,9 +31,9 @@ local act = wezterm.action
 
 config.keys = {
 	-- { key = "C", mods = "CTRL", action = act.CopyTo("Clipboard") },
-	-- { key = "V", mods = "CTRL", action = act.PasteFrom("Clipboard") },
+	{ key = "V", mods = "CTRL", action = act.PasteFrom("Clipboard") },
 	{ key = "c", mods = "CMD", action = act.CopyTo("Clipboard") },
-	{ key = "v", mods = "CMD", action = act.PasteFrom("Clipboard") },
+	-- { key = "v", mods = "CMD", action = act.PasteFrom("Clipboard") },
 	{ key = "[", mods = "CMD", action = act.ActivateTabRelative(-1) },
 	{ key = "]", mods = "CMD", action = act.ActivateTabRelative(1) },
 	{ key = "t", mods = "CMD", action = act.SpawnTab("CurrentPaneDomain") },
