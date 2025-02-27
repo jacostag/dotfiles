@@ -19,10 +19,20 @@ return {
   opts = {
     load = {
       ["external.agenda"] = {}, -- OPTIONAL if you don't want the agenda features
-      ["external.roam"] = {}, -- OPTIONAL if you don't want the roam features
+      ["external.roam"] = {
+        config = {
+          fuzzy_finder = "Snacks", -- OR "Fzf" OR "Snacks". Defaults to "Telescope"
+          fuzzy_backlinks = false, -- Set to "true" for backlinks in fuzzy finder instead of buffer
+          roam_base_directory = "", -- Directory in current workspace to store roam nodes
+          node_name_randomiser = false, -- Tokenise node name suffix for more randomisation
+          node_name_snake_case = false, -- snake_case the names if node_name_randomiser = false
+        },
+      }, -- OPTIONAL if you don't want the roam features
       ["external.many-mans"] = {
         config = {
           treesitter_fold = true, -- Set to 'false' if your package manager is currently NOT lazy.nvim
+          metadata_fold = true, -- If want @data property ... @end to fold
+          code_fold = true, -- If want @code ... @end to fold
         },
       },
       ["core.defaults"] = {},
@@ -148,65 +158,65 @@ return {
   -- require("cmp").setup({
   --   sources = { name = "Neorg" },
   -- }),
-  require("which-key").add({
-    { "<leader>n", group = "neorg" },
-    {
-      mode = { "n" },
-      {
-        "<leader>nt",
-        "<Plug>(neorg.pivot.list.toggle)",
-        desc = "[t]oggle list",
-      },
-      {
-        "<leader>nc",
-        "<Plug>(neorg.qol.todo-items.todo.task-cycle)",
-        desc = "TODO task [c]ycle",
-      },
-      {
-        "<leader>nf",
-        "<Plug>(neorg.telescope.find_norg_files)",
-        desc = "[f]ind norg files",
-      },
-      {
-        "<leader>nh",
-        "<Plug>(neorg.telescope.search_headings)",
-        desc = "search [h]eadings",
-      },
-      {
-        "<leader>nw",
-        "<Plug>(neorg.telescope.switch_workspace)",
-        desc = "switch [w]orkspace",
-      },
-      {
-        "<leader>ni",
-        "<Plug>(neorg.telescope.insert_link)",
-        desc = "[i]nsert link",
-      },
-      {
-        "<leader>nf",
-        "<Plug>(neorg.telescope.insert_file_link)",
-        desc = "insert [f]ile link",
-      },
-      {
-        "<leader>nk",
-        "<Plug>(neorg.telescope.find_linkable)",
-        desc = "find lin[k]able",
-      },
-      {
-        "<leader>nb",
-        "<Plug>(neorg.telescope.backlinks.file_backlinks)",
-        desc = "find [b]acklinks",
-      },
-      {
-        "<leader>nm",
-        "<Plug>(neorg.looking-glass.magnify-code-block)",
-        desc = "[m]agnify code block",
-      },
-      {
-        "<leader>nj",
-        "<Cmd>Neorg journal<CR>",
-        desc = "Neorg [j]ournal",
-      },
-    },
-  }),
+  --   require("which-key").add({
+  --     { "<leader>n", group = "neorg" },
+  --     {
+  --       mode = { "n" },
+  --       {
+  --         "<leader>nt",
+  --         "<Plug>(neorg.pivot.list.toggle)",
+  --         desc = "[t]oggle list",
+  --       },
+  --       {
+  --         "<leader>nc",
+  --         "<Plug>(neorg.qol.todo-items.todo.task-cycle)",
+  --         desc = "TODO task [c]ycle",
+  --       },
+  --       {
+  --         "<leader>nf",
+  --         "<Plug>(neorg.telescope.find_norg_files)",
+  --         desc = "[f]ind norg files",
+  --       },
+  --       {
+  --         "<leader>nh",
+  --         "<Plug>(neorg.telescope.search_headings)",
+  --         desc = "search [h]eadings",
+  --       },
+  --       {
+  --         "<leader>nw",
+  --         "<Plug>(neorg.telescope.switch_workspace)",
+  --         desc = "switch [w]orkspace",
+  --       },
+  --       {
+  --         "<leader>ni",
+  --         "<Plug>(neorg.telescope.insert_link)",
+  --         desc = "[i]nsert link",
+  --       },
+  --       {
+  --         "<leader>nf",
+  --         "<Plug>(neorg.telescope.insert_file_link)",
+  --         desc = "insert [f]ile link",
+  --       },
+  --       {
+  --         "<leader>nk",
+  --         "<Plug>(neorg.telescope.find_linkable)",
+  --         desc = "find lin[k]able",
+  --       },
+  --       {
+  --         "<leader>nb",
+  --         "<Plug>(neorg.telescope.backlinks.file_backlinks)",
+  --         desc = "find [b]acklinks",
+  --       },
+  --       {
+  --         "<leader>nm",
+  --         "<Plug>(neorg.looking-glass.magnify-code-block)",
+  --         desc = "[m]agnify code block",
+  --       },
+  --       {
+  --         "<leader>nj",
+  --         "<Cmd>Neorg journal<CR>",
+  --         desc = "Neorg [j]ournal",
+  --       },
+  --     },
+  --   }),
 }
