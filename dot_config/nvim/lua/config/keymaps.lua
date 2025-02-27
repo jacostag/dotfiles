@@ -14,12 +14,12 @@ vim.keymap.set("n", "Y", "y$", { desc = "Yank to end of line" })
 --   "<cmd>Telescope keymaps<CR>",
 --   { desc = "Show keymaps" }
 -- )
-vim.keymap.set(
-  "n",
-  "<leader>om",
-  "<cmd>!zellij run -d right -- glow -p % <CR>",
-  { desc = "Preview [m]arkdown on new pane" }
-)
+-- vim.keymap.set(
+--   "n",
+--   "<leader>om",
+--   "<cmd>!zellij run -d right -- glow -p % <CR>",
+--   { desc = "Preview [m]arkdown on new pane" }
+-- )
 
 vim.keymap.set(
   "x",
@@ -30,8 +30,8 @@ vim.keymap.set(
 
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "scroll up and center" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "scroll down and center" })
-vim.keymap.set("n", "n", "nzzzv", { desc = "keep cursor centered" })
-vim.keymap.set("n", "N", "Nzzzv", { desc = "keep cursor centered" })
+-- vim.keymap.set("n", "n", "nzzzv", { desc = "keep cursor centered" })
+-- vim.keymap.set("n", "N", "Nzzzv", { desc = "keep cursor centered" })
 vim.keymap.set(
   "n",
   "<BS>",
