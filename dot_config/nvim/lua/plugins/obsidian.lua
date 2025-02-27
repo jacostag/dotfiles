@@ -201,40 +201,40 @@ return {
       },
     },
   },
-  require("which-key").add({
-    { "<leader>o", group = "obsidian" },
-    {
-      "<leader>oi",
-      "<cmd>ObsidianLink<CR>",
-      desc = "Obsidian [i]nsert link to",
-      mode = "v",
-    },
-    {
-      "<leader>or",
-      "<cmd>ObsidianLinkNew<CR>",
-      desc = "Obsidian link to [N]ew",
-      mode = "v",
-    },
-    {
-      mode = { "n", "v" },
-      {
-        "<leader>os",
-        "<cmd>ObsidianQuickSwitch<CR>",
-        desc = "[O]bsidian Quick[S]witch",
-      },
-      { "<leader>on", "<cmd>ObsidianNew<CR>", desc = "[O]bsidian [N]ew note" },
-      {
-        "<leader>of",
-        "<cmd>ObsidianFollowLink<CR>",
-        desc = "[O]bsidian [F]ollow link",
-      },
-      {
-        "<leader>ob",
-        "<cmd>ObsidianBacklinks<CR>",
-        desc = "[O]bsidian [B]acklinks",
-      },
-      { "<leader>ot", "<cmd>ObsidianToday<CR>", desc = "[O]bsidian [T]oday" },
-      { "<leader>ol", "<cmd>ObsidianLinks<CR>", desc = "[O]bsidian [l]inks" },
-    },
-  }),
+  -- require("which-key").add({
+  --   { "<leader>o", group = "obsidian" },
+  --   {
+  --     "<leader>oi",
+  --     "<cmd>ObsidianLink<CR>",
+  --     desc = "Obsidian [i]nsert link to",
+  --     mode = "v",
+  --   },
+  --   {
+  --     "<leader>or",
+  --     "<cmd>ObsidianLinkNew<CR>",
+  --     desc = "Obsidian link to [N]ew",
+  --     mode = "v",
+  --   },
+  --   {
+  --     mode = { "n", "v" },
+  --     {
+  --       "<leader>os",
+  --       "<cmd>ObsidianQuickSwitch<CR>",
+  --       desc = "[O]bsidian Quick[S]witch",
+  --     },
+  --     { "<leader>on", "<cmd>ObsidianNew<CR>", desc = "[O]bsidian [N]ew note" },
+  --     {
+  --       "<leader>of",
+  --       "<cmd>ObsidianFollowLink<CR>",
+  --       desc = "[O]bsidian [F]ollow link",
+  --     },
+  --     {
+  --       "<leader>ob",
+  --       "<cmd>ObsidianBacklinks<CR>",
+  --       desc = "[O]bsidian [B]acklinks",
+  --     },
+  --     { "<leader>ot", "<cmd>ObsidianToday<CR>", desc = "[O]bsidian [T]oday" },
+  --     { "<leader>ol", "<cmd>ObsidianLinks<CR>", desc = "[O]bsidian [l]inks" },
+  --   },
+  -- }),
 }
