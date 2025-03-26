@@ -1,6 +1,8 @@
 return {
   "nvim-neorg/neorg",
   dependencies = {
+    { "vhyrro/luarocks.nvim" },
+    { "nvim-treesitter" },
     { "nvim-lua/plenary.nvim" },
     { "nvim-neorg/neorg-telescope" },
     { "bottd/neorg-worklog" },
@@ -14,6 +16,9 @@ return {
     { "pysan3/pathlib.nvim" },
     { "nvim-neotest/nvim-nio" },
   },
+  lazy = false,
+  version = "*",
+  config = true,
   ft = "norg",
   cmd = { "Neorg" },
   opts = {
