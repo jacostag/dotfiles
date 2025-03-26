@@ -184,7 +184,7 @@ keybinds {
     }
     shared_except "locked" {
         bind "Ctrl f" {
-            LaunchOrFocusPlugin "https://github.com/karimould/zellij-forgot/releases/latest/download/zellij_forgot.wasm" {
+            LaunchOrFocusPlugin "https://github.com/karimould/zellij-forgot/releases/download/0.4.1/zellij_forgot.wasm" {
                 "lock"                  "ctrl + g"
                 "unlock"                "ctrl + g"
                 "new pane"              "ctrl + p + n"
@@ -234,8 +234,7 @@ keybinds {
     }
     shared_except "locked" {
       bind "Ctrl y" {
-        //LaunchOrFocusPlugin "https://github.com/rvcas/room/releases/latest/download/room.wasm" {
-        LaunchOrFocusPlugin "file:/home/gosz/.config/zellij/plugins/room.wasm" {
+        LaunchOrFocusPlugin "https://github.com/rvcas/room/releases/download/v1.2.0/room.wasm" {
             floating true
             ignore_case true
         }
@@ -249,7 +248,7 @@ plugins {
     compact-bar location="zellij:compact-bar"
     session-manager location="zellij:session-manager"
     configuration location="zellij:configuration"
-    zjstatus { path "https://github.com/dj95/zjstatus/releases/download/v0.18.1/zjstatus.wasm"; }
+    zjstatus { path "https://github.com/dj95/zjstatus/releases/download/v0.20.2/zjstatus.wasm"; }
 }
 
 // Choose what to do when zellij receives SIGTERM, SIGINT, SIGQUIT or SIGHUP
@@ -328,6 +327,7 @@ theme "catppuccin-mocha"
 //
 //default_layout "compact"
 default_layout "zjstatus2"
+//default_layout "catppuccin"
 //default_layout "zjstatus"
 //default_layout "default"
 
