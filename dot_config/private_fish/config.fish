@@ -5,6 +5,7 @@ set -gx EDITOR nvim
 set -gx PAGER ov
 set -g fish_key_bindings fish_vi_key_bindings
 set -gx MANPAGER "nvim +Man!"
+#set -gx MANPAGER ov
 set -gx SHELL /usr/bin/fish
 set -gx ATUIN_NOBIND true
 
