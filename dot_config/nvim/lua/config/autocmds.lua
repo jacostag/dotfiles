@@ -19,25 +19,25 @@ au({ "FocusGained", "TermClose", "TermLeave" }, {
 --   end,
 -- })
 
-au("BufEnter", {
-  pattern = "*.md",
-  command = "set colorcolumn=80 textwidth=80 linebreak",
-})
+-- au("BufEnter", {
+--   pattern = "*.md",
+--   command = "set colorcolumn=80 textwidth=80 linebreak",
+-- })
 
-au("BufEnter", {
-  pattern = "*",
-  command = "set colorcolumn=80",
-})
+-- au("BufEnter", {
+--   pattern = "*",
+--   command = "set colorcolumn=80",
+-- })
 
-au({ "TextChanged", "TextChangedI" }, {
-  pattern = { "*.md", "*.norg" },
-  command = "silent write",
-})
+-- au({ "TextChanged", "TextChangedI" }, {
+--   pattern = { "*.md", "*.norg" },
+--   command = "silent write",
+-- })
 
-au({ "TextChanged", "TextChangedI" }, {
-  pattern = "*.norg",
-  command = "Neorg update-metadata",
-})
+-- au({ "TextChanged", "TextChangedI" }, {
+--   pattern = "*.norg",
+--   command = "Neorg update-metadata",
+-- })
 
 -- vim.api.nvim_create_autocmd("BufEnter", {
 --   pattern = "*.norg",
@@ -48,10 +48,10 @@ au({ "TextChanged", "TextChangedI" }, {
 --   end,
 -- })
 
-au("BufNewFile", {
-  pattern = "*.norg",
-  command = "Neorg inject-metadata",
-})
+-- au("BufNewFile", {
+--   pattern = "*.norg",
+--   command = "Neorg inject-metadata",
+-- })
 
 au("BufEnter", {
   pattern = "~/scratch.scratch",
@@ -59,13 +59,13 @@ au("BufEnter", {
 })
 
 -- wrap and check for spell in norg and neorg filetypes
-au("FileType", {
-  pattern = { "norg", "neorg" },
-  callback = function()
-    vim.opt_local.wrap = true
-    vim.opt_local.spell = true
-  end,
-})
+-- au("FileType", {
+--   pattern = { "norg", "neorg" },
+--   callback = function()
+--     vim.opt_local.wrap = true
+--     vim.opt_local.spell = true
+--   end,
+-- })
 
 --the idea is to sync system and nvim clipboard only when is gaining or loosing focus
 -- vim.api.nvim_create_autocmd({ "FocusGained" }, {
