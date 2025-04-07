@@ -38,4 +38,8 @@ abbr s2mac '/usr/bin/ddcutil setvcp 60 0x1b' #switch usb to mac
 
 abbr delsnaps 'sudo snapper --config root --csvout list --columns number | rg -v "0|number" | xargs -I {} sudo snapper delete -s {}'
 
+abbr seshl2 'sesh connect $(sesh list | fzf)'
+
+abbr seshl 'sesh connect $(sesh list -i| gum filter --limit 1 --no-strip-ansi --no-sort --fuzzy --placeholder "Pick a sesh" --height 30 --prompt='⚡')'
+
 #bash -c 'gsettings set org.gnome.desktop.notifications show-banners $(if [ "$(gsettings get org.gnome.desktop.notifications show-banners)" = "true" ]; then echo "false"; else echo "true"; fi)'
