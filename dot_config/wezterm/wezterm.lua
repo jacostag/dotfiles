@@ -40,6 +40,7 @@ config.keys = {
 	{ key = "q", mods = "CMD", action = wezterm.action.QuitApplication },
 	{ key = "y", mods = "CMD", action = wezterm.action.ActivateLastTab },
 	{ key = "e", mods = "CMD", action = wezterm.action.QuickSelect },
+	{ key = "i", mods = "CMD", action = wezterm.action.ShowTabNavigator },
 }
 
 config.mouse_bindings = {
