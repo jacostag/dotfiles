@@ -16,7 +16,7 @@ return {
     { "pysan3/pathlib.nvim" },
     { "nvim-neotest/nvim-nio" },
   },
-  lazy = false,
+  lazy = true,
   version = "*",
   config = true,
   ft = "norg",
