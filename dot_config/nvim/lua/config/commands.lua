@@ -18,24 +18,24 @@ end, { desc = "Write file with sudo permissions" })
 --   Current_workspace = dirman.get_current_workspace()[2]
 -- end
 
-vim.api.nvim_create_user_command("Notdo", function()
-  require("telescope.builtin").grep_string({
-    search = [[^\s*(-|~)+.\(.\)]],
-    use_regex = true,
-    -- search_dirs = { tostring(Current_workspace) },
-    search_dirs = { tostring("~/neorg") },
-    prompt_title = "TODOs",
-  })
-end, { desc = "Search for todos/tasks" })
-
-vim.api.nvim_create_user_command("Obtodo", function()
-  require("telescope.builtin").grep_string({
-    search = [[^\s*(-|~)+.\(.\)]],
-    use_regex = true,
-    search_dirs = { tostring("~/Documents/Obsidian/Obsidian") },
-    prompt_title = "TODOs",
-  })
-end, { desc = "Search for Obsidian todos/tasks" })
+-- vim.api.nvim_create_user_command("Notdo", function()
+--   require("telescope.builtin").grep_string({
+--     search = [[^\s*(-|~)+.\(.\)]],
+--     use_regex = true,
+--     -- search_dirs = { tostring(Current_workspace) },
+--     search_dirs = { tostring("~/neorg") },
+--     prompt_title = "TODOs",
+--   })
+-- end, { desc = "Search for todos/tasks" })
+--
+-- vim.api.nvim_create_user_command("Obtodo", function()
+--   require("telescope.builtin").grep_string({
+--     search = [[^\s*(-|~)+.\(.\)]],
+--     use_regex = true,
+--     search_dirs = { tostring("~/Documents/Obsidian/Obsidian") },
+--     prompt_title = "TODOs",
+--   })
+-- end, { desc = "Search for Obsidian todos/tasks" })
 
 vim.api.nvim_create_user_command("Sc", function()
   -- local bufnr = vim.api.nvim_create_buf(false, true) -- Create a scratch buffer
