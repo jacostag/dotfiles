@@ -17,7 +17,8 @@ abbr sed "sad --pager 'delta -s'"
 
 abbr tvmd "fd -t f .md | tv --preview 'mdcat {0}'"
 abbr tvf "fd -t f | tv --preview 'bat -p --color=always {0}'"
-abbr ntv "tv | xargs nvim"
+#abbr ntv "tv | xargs nvim"
+abbr ntv 'nvim $(tv)'
 
 abbr scrcpyAudio 'scrcpy --tcpip=192.168.86.26 --no-video'
 abbr scrcpyCtrl 'scrcpy --tcpip=192.168.86.26 --turn-screen-off'
@@ -27,6 +28,7 @@ abbr reap 'set -gx GDK_SCALE 1.75; pw-jack -s 48000 -p 256 reaper -new'
 
 abbr dndon 'gsettings set org.gnome.desktop.notifications show-banners false'
 abbr dndoff 'gsettings set org.gnome.desktop.notifications show-banners true'
+#bash -c 'gsettings set org.gnome.desktop.notifications show-banners $(if [ "$(gsettings get org.gnome.desktop.notifications show-banners)" = "true" ]; then echo "false"; else echo "true"; fi)'
 
 abbr sshgem 'ssh kiosk@gemini.circumlunar.space'
 
@@ -42,4 +44,6 @@ abbr seshl2 'sesh connect $(sesh list | fzf)'
 
 abbr seshl 'sesh connect $(sesh list -i| gum filter --limit 1 --no-strip-ansi --no-sort --fuzzy --placeholder "Pick a sesh" --height 30 --prompt='⚡')'
 
-#bash -c 'gsettings set org.gnome.desktop.notifications show-banners $(if [ "$(gsettings get org.gnome.desktop.notifications show-banners)" = "true" ]; then echo "false"; else echo "true"; fi)'
+abbr synctasks 'CALDAV_USERNAME=ncacosta CALDAV_PASSWD=JrM7o-jTdGj-m78GJ-dAxif-pkMN5 tw_caldav_sync --caldav-url https://nch.pl/remote.php/dav --caldav-calendar Tasks -t sync'
+
+#abbr synctasks2 '/usr/bin/vdirsyncer sync'
