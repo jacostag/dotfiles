@@ -44,6 +44,4 @@ abbr seshl2 'sesh connect $(sesh list | fzf)'
 
 abbr seshl 'sesh connect $(sesh list -i| gum filter --limit 1 --no-strip-ansi --no-sort --fuzzy --placeholder "Pick a sesh" --height 30 --prompt='⚡')'
 
-abbr synctasks 'CALDAV_USERNAME=ncacosta CALDAV_PASSWD=JrM7o-jTdGj-m78GJ-dAxif-pkMN5 tw_caldav_sync --caldav-url https://nch.pl/remote.php/dav --caldav-calendar Tasks -t sync'
-
 #abbr synctasks2 '/usr/bin/vdirsyncer sync'
