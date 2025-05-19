@@ -25,7 +25,7 @@ config.text_background_opacity = 0.9
 config.quick_select_alphabet = "colemak"
 
 config.enable_kitty_graphics = true
-config.max_fps = 60
+config.max_fps = 120
 
 local act = wezterm.action
 
@@ -39,7 +39,7 @@ config.keys = {
 	{ key = "t", mods = "CMD", action = act.SpawnTab("CurrentPaneDomain") },
 	{ key = "q", mods = "CMD", action = wezterm.action.QuitApplication },
 	{ key = "y", mods = "CMD", action = wezterm.action.ActivateLastTab },
-	{ key = "e", mods = "CMD", action = wezterm.action.QuickSelect },
+	{ key = "u", mods = "CMD", action = wezterm.action.QuickSelect },
 	{ key = "i", mods = "CMD", action = wezterm.action.ShowTabNavigator },
 }
 
