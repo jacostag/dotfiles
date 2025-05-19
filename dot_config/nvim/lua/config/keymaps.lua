@@ -22,6 +22,20 @@ vim.keymap.set("n", "Y", "y$", { desc = "Yank to end of line" })
 -- )
 
 vim.keymap.set(
+  "n",
+  "<leader>om",
+  "<cmd>!tmux split-window -h; tmux send -t2 'glow -p %' Enter <CR>",
+  { desc = "Preview [m]arkdown on new pane" }
+)
+
+vim.keymap.set(
+  "n",
+  "<leader>ct",
+  "<cmd>!~/.local/bin/task-annotate.sh '%:p' <CR>",
+  { desc = "Add current file to a new taskwarrior task" }
+)
+
+vim.keymap.set(
   "x",
   "<leader>te",
   [["_dP]],
