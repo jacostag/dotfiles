@@ -1,0 +1,73 @@
+## Get editor completions based on the config schema
+#"$schema" = 'https://starship.rs/config-schema.json'
+
+format = '[${custom.task_pwd}$directory$all]($style)'
+#format = '[$directory$character$status]($style)'
+right_format = '[ ${custom} $symbol$time ]($style)'
+add_newline = true
+
+[time]
+disabled = false
+format = '[$time]($style)'
+time_format = '%T'
+utc_time_offset = '-4'
+style = "blue"
+
+[cmd_duration]
+min_time = 500
+format = 'duration [$duration](bold yellow)'
+
+[direnv]
+disabled = false
+
+[gcloud]
+symbol = "  "
+format = '$character[$status]($style)'
+
+[directory]
+read_only = " 󰌾"
+
+[docker_context]
+symbol = " "
+format = 'via [ $context](blue bold)'
+
+[git_branch]
+symbol = " "
+
+[git_commit]
+tag_symbol = '  '
+
+[golang]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[python]
+symbol = " "
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = "󱘗 "
+
+[custom.task_warrior]
+command = "$HOME/.local/bin/task_prompt.sh"
+when = "which task"
+disabled = false
+description = "Show if there are important tasks"
+style = "red"
+
+[custom.task_count_pending]
+command = "task count rc.gc=off rc.verbose=nothing status:pending"
+when = "which task"
+disabled = false
+symbol = "  "
+description = "Count of pending Taskwarrior tasks"
+
+[custom.task_pwd]
+command = "$HOME/.local/bin/task-dir.sh"
+when = "which task"
+disabled = false
+description = "Count tasks on current dir as project"
