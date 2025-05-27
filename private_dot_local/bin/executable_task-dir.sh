@@ -4,7 +4,7 @@ set -e
 
 function check_tasks_pwd() {
   current_dir=$(echo $PWD | sed "s|\/|_|g")
-  task_cmd="/usr/bin/task count rc.verbose: tag:${current_dir}"
+  task_cmd="/usr/bin/task count rc.verbose: tag:${current_dir} status:pending"
   if [ $(${task_cmd}) -gt "0" ]; then
     echo "  "
     exit 0
