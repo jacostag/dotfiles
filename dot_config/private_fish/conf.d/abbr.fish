@@ -44,4 +44,6 @@ abbr seshl2 'sesh connect $(sesh list | fzf)'
 
 abbr seshl 'sesh connect $(sesh list -i| gum filter --limit 1 --no-strip-ansi --no-sort --fuzzy --placeholder "Pick a sesh" --height 30 --prompt='⚡')'
 
+abbr tah 'task add pro:$PWD'
+
 #abbr synctasks2 '/usr/bin/vdirsyncer sync'
