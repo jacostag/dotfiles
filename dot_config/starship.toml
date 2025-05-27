@@ -70,4 +70,5 @@ description = "Count of pending Taskwarrior tasks"
 command = "$HOME/.local/bin/task-dir.sh"
 when = "which task"
 disabled = false
-description = "Count tasks on current dir as project"
+#symbol = " "
+description = "Count tasks on current dir as tag"
