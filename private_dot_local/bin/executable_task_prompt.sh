@@ -14,8 +14,8 @@ elif [ $(${task_cmd} "urgency > 10") -gt "0" ]; then
   echo " 󰨱 "
 elif [ $(${task_cmd} +OVERDUE) -gt "0" ]; then
   # Overdue tasks
-  echo -e " 󰯆 "
-  #echo -e ""
+  # echo -e " 󰯆 "
+  echo -e ""
 else
   # A count of all tasks
   ${task_cmd}
