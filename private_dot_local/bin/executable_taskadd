@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# adds a new tag with the current directory as a tag
 
 # Exit immediately if a command exits with a non-zero status.
 set -e
@@ -22,7 +23,7 @@ function main() {
   # 2. Verify that a task description has been provided.
   if [[ $# -eq 0 ]]; then
     error_exit "You must provide a description for the task.
-Usage: task-add <your task description>"
+Usage: taskadd <your task description>"
   fi
 
   # 3. Get the current directory and replace all '/' with '_' to create a valid tag.
