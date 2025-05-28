@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
+# Get the tags from a task, print and copy to cb the first valid existing
+# directory found
 
 # Exit immediately if a command exits with a non-zero status.
 set -e
-
-# --- Script Functions ---
 
 # Prints an error message to stderr and exits.
 #
@@ -13,15 +13,19 @@ function error_exit() {
   exit 1
 }
 
-# --- Main Logic ---
-
 function main() {
   local task_id="$1"
 
   # 1. Verify that an argument was provided and it's a number.
   local integer_regex='^[0-9]+$'
   if ! [[ $task_id =~ $integer_regex ]]; then
-    error_exit "A valid task number must be provided."
+    error_exit "A valid task number must be provided.
+
+    Usage: cdt <your task number>
+   
+    Or to jump to the directory directly:
+    
+    cd \"\$(cdt 2)\""
   fi
 
   # 2. Get all task data in a single call for better performance.
@@ -63,8 +67,6 @@ function main() {
   # 6. If no valid directory tag was found after checking all of them.
   error_exit "No tag on task $task_id corresponds to a valid directory."
 }
-
-# --- Script Execution ---
 
 # Pass all script arguments to the main function.
 main "$@"
