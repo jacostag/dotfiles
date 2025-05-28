@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+
+# Exit immediately if a command exits with a non-zero status.
+set -e
+
+# --- Script Functions ---
+
+# Prints an error message to stderr and exits.
+#
+# @param $1 - The error message to print.
+function error_exit() {
+  echo "ERROR: $1" >&2
+  exit 1
+}
+
+# --- Main Logic ---
+
+function main() {
+  local task_id="$1"
+
+  # 1. Verify that an argument was provided and it's a number.
+  local integer_regex='^[0-9]+$'
+  if ! [[ $task_id =~ $integer_regex ]]; then
+    error_exit "A valid task number must be provided."
+  fi
+
+  # 2. Get all task data in a single call for better performance.
+  # The '|| true' prevents 'set -e' from exiting if no task is found (jq will get an empty string).
+  local task_json
+  task_json=$(/usr/bin/task "$task_id" export || true)
+
+  # 3. Check if the task exists.
+  # If 'task export' finds nothing, it returns an empty string or '[]'.
+  if [[ -z "$task_json" || "$task_json" == "[]" ]]; then
+    error_exit "Task $task_id does not exist."
+  fi
+
+  # 4. Safely read tags into an array.
+  # Using 'mapfile' is safer than 'array=($(...))' for paths with spaces.
+  # The '?' in '.[]?' suppresses errors if the 'tags' field is missing.
+  local tags
+  mapfile -t tags < <(jq -r '.[0].tags[]?' <<<"$task_json")
+
+  if [[ ${#tags[@]} -eq 0 ]]; then
+    error_exit "No tags found on task $task_id."
+  fi
+
+  # 5. Iterate through tags to find a valid directory.
+  for tag in "${tags[@]}"; do
+    # Replace underscores with slashes to create a potential directory path.
+    local dir_path="${tag//_//}"
+
+    # Check if the path is an actual directory. This is more reliable than a regex.
+    if [[ -d "$dir_path" ]]; then
+      # If found, print the path to stdout and exit successfully.
+      # This allows usage like: cd "$(task-cd.sh 123)"
+      wl-copy -n "cd $dir_path"
+      echo "$dir_path"
+      exit 0
+    fi
+  done
+
+  # 6. If no valid directory tag was found after checking all of them.
+  error_exit "No tag on task $task_id corresponds to a valid directory."
+}
+
+# --- Script Execution ---
+
+# Pass all script arguments to the main function.
+main "$@"
