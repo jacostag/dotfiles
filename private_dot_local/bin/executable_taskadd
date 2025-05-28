@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+# Exit immediately if a command exits with a non-zero status.
+set -e
+
+# Prints an error message to stderr and exits.
+#
+# @param $1 - The error message to print.
+function error_exit() {
+  echo "ERROR: $1" >&2
+  exit 1
+}
+
+# --- Main Logic ---
+
+function main() {
+  # 1. Verify that the 'task' command is available.
+  if ! command -v task &>/dev/null; then
+    error_exit "The 'task' command could not be found. Please ensure Taskwarrior is installed and in your PATH."
+  fi
+
+  # 2. Verify that a task description has been provided.
+  if [[ $# -eq 0 ]]; then
+    error_exit "You must provide a description for the task.
+Usage: task-add <your task description>"
+  fi
+
+  # 3. Get the current directory and replace all '/' with '_' to create a valid tag.
+  # Example: /home/user/project -> _home_user_project
+  local dir_as_tag
+  dir_as_tag=${PWD//\//_}
+
+  task add "tag:${dir_as_tag}" "$@"
+}
+
+# --- Script Execution ---
+
+# Pass all script arguments to the main function.
+main "$@"
