@@ -1,8 +1,41 @@
 #!/usr/bin/env bash
+# Add the current dir as an annotation to a new task
 
+# Exit immediately if a command exits with a non-zero status.
 set -e
 
-#current_dir=$(echo $PWD | sed "s|\/|_|g")
-current_dir=${PWD//\//_}
-/usr/bin/task add tag:${current_dir} "$@"
-exit 0
+# Prints an error message to stderr and exits.
+#
+# @param $1 - The error message to print.
+function error_exit() {
+  echo "ERROR: $1" >&2
+  exit 1
+}
+
+function main() {
+  # 1. Verify that the 'task' command is available.
+  if ! command -v task &>/dev/null; then
+    error_exit "The 'task' command could not be found. Please ensure Taskwarrior is installed and in your PATH."
+  fi
+
+  # 2. Verify that a task description has been provided.
+  if [[ $# -eq 0 ]]; then
+    error_exit "You must provide a description for the task.
+Usage: task-add <your task description>"
+  fi
+
+  # 3. Add the task and capture the output to get the ID.
+  # local task_id
+  # task_id=$(task add +nvim "$@")
+  # echo "$task_id" # Let the user see the confirmation message.
+
+  task add +dir "$@"
+  local new_id
+  new_id=$(task +LATEST ids)
+
+  # 6. Add the current directory path ($PWD) as an annotation to the new task.
+  task "$new_id" annotate "$PWD"
+  echo "Successfully annotated task $new_id with directory: $PWD"
+}
+
+main "$@"
