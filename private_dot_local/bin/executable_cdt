@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
-# Get the tags from a task, print and copy to cb the first valid existing
-# directory found
+# The script will search for valid directories as annotations on a task
+# The output will be the selected directory and will be copied to the cb
 
-# Exit immediately if a command exits with a non-zero status.
 set -e
 
 # Prints an error message to stderr and exits.
@@ -19,53 +18,70 @@ function main() {
   # 1. Verify that an argument was provided and it's a number.
   local integer_regex='^[0-9]+$'
   if ! [[ $task_id =~ $integer_regex ]]; then
-    error_exit "A valid task number must be provided.
-
-    Usage: cdt <your task number>
-   
-    Or to jump to the directory directly:
-    
-    cd \"\$(cdt 2)\""
+    error_exit "A valid task number must be provided."
   fi
 
   # 2. Get all task data in a single call for better performance.
-  # The '|| true' prevents 'set -e' from exiting if no task is found (jq will get an empty string).
   local task_json
-  task_json=$(/usr/bin/task "$task_id" export || true)
+  task_json=$(task "$task_id" export || true)
 
   # 3. Check if the task exists.
-  # If 'task export' finds nothing, it returns an empty string or '[]'.
   if [[ -z "$task_json" || "$task_json" == "[]" ]]; then
     error_exit "Task $task_id does not exist."
   fi
 
-  # 4. Safely read tags into an array.
-  # Using 'mapfile' is safer than 'array=($(...))' for paths with spaces.
-  # The '?' in '.[]?' suppresses errors if the 'tags' field is missing.
-  local tags
-  mapfile -t tags < <(jq -r '.[0].tags[]?' <<<"$task_json")
+  # 4. Read all annotation descriptions into a shell array.
+  local all_annotations
+  mapfile -t all_annotations < <(jq -r '.[0].annotations[]?.description' <<<"$task_json")
 
-  if [[ ${#tags[@]} -eq 0 ]]; then
-    error_exit "No tags found on task $task_id."
+  if [[ ${#all_annotations[@]} -eq 0 ]]; then
+    error_exit "No annotations found on task $task_id."
   fi
 
-  # 5. Iterate through tags to find a valid directory.
-  for tag in "${tags[@]}"; do
-    # Replace underscores with slashes to create a potential directory path.
-    local dir_path="${tag//_//}"
-
-    # Check if the path is an actual directory. This is more reliable than a regex.
-    if [[ -d "$dir_path" ]]; then
-      # If found, print the path to stdout and exit successfully.
-      # This allows usage like: cd "$(task-cd.sh 123)"
-      wl-copy -n "cd $dir_path"
-      echo "$dir_path"
-      exit 0
+  # 5. Filter annotations to find only valid directory paths.
+  local valid_dir_paths=()
+  for potential_path in "${all_annotations[@]}"; do
+    if [[ -d "$potential_path" ]]; then
+      valid_dir_paths+=("$potential_path")
     fi
   done
 
-  # 6. If no valid directory tag was found after checking all of them.
-  error_exit "No tag on task $task_id corresponds to a valid directory."
+  # 6. Check if any valid directory paths were found.
+  if [[ ${#valid_dir_paths[@]} -eq 0 ]]; then
+    error_exit "No annotations on task $task_id correspond to a valid directory path."
+  fi
+
+  # 7. If only one valid path, use it directly without prompting.
+  if [[ ${#valid_dir_paths[@]} -eq 1 ]]; then
+    wl-copy -n "${valid_dir_paths[0]}"
+    echo "${valid_dir_paths[0]}"
+    exit 0
+  fi
+
+  # 8. Interactive selection if multiple valid directory paths are found.
+  #    Messages for user interaction (PS3, echo) are sent to stderr.
+  echo "Multiple directory paths found in annotations for task $task_id:" >&2
+
+  # PS3 is the prompt string for the select menu.
+  # The select command itself prints the menu options to stderr.
+  PS3=$'\nSelect a directory by number (or Ctrl+D to cancel): '
+  select chosen_dir in "${valid_dir_paths[@]}"; do
+    if [[ -n "$chosen_dir" ]]; then
+      # User made a valid selection. Output it to stdout.
+      wl-copy -n "$chosen_dir"
+      echo "$chosen_dir"
+      exit 0
+    else
+      # This case is usually hit if the user presses Ctrl+D or an invalid entry
+      # that `select` doesn't automatically handle by re-prompting.
+      # If `select` simply re-prompts on invalid number, this will mainly catch EOF.
+      error_exit "Invalid selection or operation cancelled."
+      # The loop will terminate on Ctrl+D, then the script will exit.
+    fi
+  done
+
+  # This line is reached if the select loop is exited without making a valid choice (e.g., via Ctrl+D)
+  error_exit "No directory selected."
 }
 
 # Pass all script arguments to the main function.
