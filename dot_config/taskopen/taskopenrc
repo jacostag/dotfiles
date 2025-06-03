@@ -30,7 +30,7 @@ mdedit.regex = "^[\\.\\/~]+.*\\.(md|pandoc|mdwn|markdown)"
 mdedit.command = "$EDITOR $FILE"
 #use cdt to change to a PATH
 dirs.target=annotations
-dirs.regex="^/(.*)?"
+dirs.regex="^/(.*)?/"
 dirs.command="cdt $ID"
 #dirs.command="wl-copy -n cd $FILE"
 dirs.filtercommand = "test -d $FILE"
