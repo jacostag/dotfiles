@@ -46,4 +46,10 @@ abbr seshl 'sesh connect $(sesh list -i| gum filter --limit 1 --no-strip-ansi --
 
 abbr tah '$HOME/.local/bin/task-add.sh'
 
+abbr tab 'task add pro:$PWD +dir'
+
+abbr tlp 'task li pro:$PWD +dir'
+
+abbr tcd 'cd $(cdt )'
+
 #abbr synctasks2 '/usr/bin/vdirsyncer sync'
