@@ -10,7 +10,8 @@ path_ext=/usr/share/taskopen/scripts
 [Actions]
 files.target=annotations
 files.labelregex=".*"
-files.regex="^[\\.\\/~]+.*\\.(.*)"
+files.regex="^[\\.\\/~]+.*\\.(.*)^/$"
+#files.regex="^[\\.\\/~]+.*\\.(.*)"
 #files.command="xdg-open $FILE"
 files.command="xdg-open-cli $FILE"
 #files.command="$EDITOR $FILE"
