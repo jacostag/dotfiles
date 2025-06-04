@@ -1,0 +1,61 @@
+# [Created by task 3.4.1 4/21/2025 11:46:31]
+news.version=3.4.1
+
+# To use the default location of the XDG directories,
+# move this configuration file from ~/.taskrc to ~/.config/task/taskrc and update location config as follows:
+
+data.location=~/.local/share/task
+hooks.location=~/.config/task/hooks
+
+weekstart=monday
+
+# Color theme (uncomment one to use)
+#include light-16.theme
+#include light-256.theme
+#include bubblegum-256.theme
+#include dark-16.theme
+#include dark-256.theme
+#include dark-red-256.theme
+#include dark-green-256.theme
+#include dark-blue-256.theme
+#include dark-violets-256.theme
+#include dark-yellow-green.theme
+#include dark-gray-256.theme
+#include dark-gray-blue-256.theme
+##include solarized-dark-256.theme
+#include solarized-light-256.theme
+#include no-color.theme
+
+include ~/.config/task/themes/catppuccin.theme
+
+uda.frequency.type=string
+
+#Taskwarrior tui selection
+#uda.taskwarrior-tui.selection.indicator=->
+uda.taskwarrior-tui.selection.bold=yes
+uda.taskwarrior-tui.selection.italic=no
+uda.taskwarrior-tui.selection.dim=yes
+uda.taskwarrior-tui.selection.blink=no
+uda.taskwarrior-tui.selection.reverse=yes
+uda.taskwarrior-tui.task-report.show-info=false
+
+uda.taskwarrior-tui.quick-tag.name=sync
+
+uda.taskwarrior-tui.task-report.use-all-tasks-for-completion=true
+
+uda.taskwarrior-tui.shortcuts.1=/usr/bin/taskopen
+uda.taskwarrior-tui.shortcuts.2=/usr/bin/task sync
+uda.taskwarrior-tui.shortcuts.3=~/.local/bin/task-sync.sh
+
+#uda.taskwarrior-tui.background_process=vdirsyncer sync
+#uda.taskwarrior-tui.background_process_period=120
+
+sync.encryption_secret="$TSYNC_SECRET"
+sync.server.url=$TSYNC_URL
+sync.server.client_id=$TSYNC_ID
+
+report.simple.description='Simple'
+report.simple.columns=description.count
+report.simple.labels=Desc
+report.simple.sort=urgency-
+report.simple.filter=status:pending
