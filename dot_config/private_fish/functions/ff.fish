@@ -1,5 +1,5 @@
 function ff --description "finding files"
-    fd --type file |
+    fd --type file $argv[1] |
         fzf --prompt 'Files> ' \
             --multi \
             --border \
