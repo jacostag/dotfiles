@@ -24,10 +24,10 @@ Usage: task-add-start <your task description>"
   fi
 
   # Add the task and capture the output to get the ID.
-  task add +dir "$@"
+  task add "$@"
   local new_id
   new_id=$(task +LATEST ids)
-
+  #start the task
   task "$new_id" start
 }
 
