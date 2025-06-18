@@ -11,7 +11,7 @@ abbr svi "sudo -Es nvim"
 abbr grep "rg --color auto"
 abbr catb bat
 abbr cat "bat -pp"
-abbr cle "yes ' ' | head -n 100"
+abbr pot "yes ' ' | head -n 100"
 
 abbr sed "sad --pager 'delta -s'"
 
@@ -57,5 +57,11 @@ abbr t task
 abbr tas '$HOME/.local/bin/task-add-start.sh'
 
 abbr modr 'mods -R shell'
+
+abbr bee2md 'python3 /home/gosz/git/write_bee_to_md/app.py'
+
+abbr bee2tw 'uv run /home/gosz/git/write_bee_to_md/bee2tw.py'
+
+abbr ghme 'gh search issues --assignee @me --state open'
 
 #abbr synctasks2 '/usr/bin/vdirsyncer sync'
