@@ -30,6 +30,8 @@ include ~/.config/task/themes/catppuccin.theme
 
 uda.frequency.type=string
 
+urgency.user.tag.work.coefficient=10.0
+
 #Taskwarrior tui selection
 #uda.taskwarrior-tui.selection.indicator=->
 uda.taskwarrior-tui.selection.bold=yes
@@ -45,10 +47,7 @@ uda.taskwarrior-tui.task-report.use-all-tasks-for-completion=true
 
 uda.taskwarrior-tui.shortcuts.1=/usr/bin/taskopen
 uda.taskwarrior-tui.shortcuts.2=/usr/bin/task sync
-uda.taskwarrior-tui.shortcuts.3=~/.local/bin/task-sync.sh
-
-#uda.taskwarrior-tui.background_process=vdirsyncer sync
-#uda.taskwarrior-tui.background_process_period=120
+uda.taskwarrior-tui.shortcuts.3=~/.local/bin/synct
 
 sync.encryption_secret="$TSYNC_SECRET"
 sync.server.url=$TSYNC_URL
@@ -59,3 +58,56 @@ report.simple.columns=description.count
 report.simple.labels=Desc
 report.simple.sort=urgency-
 report.simple.filter=status:pending
+
+# Bugwarrior UDAs
+uda.githubtitle.type=string
+uda.githubtitle.label=Github Title
+uda.githubbody.type=string
+uda.githubbody.label=Github Body
+uda.githubcreatedon.type=date
+uda.githubcreatedon.label=Github Created
+uda.githubupdatedat.type=date
+uda.githubupdatedat.label=Github Updated
+uda.githubclosedon.type=date
+uda.githubclosedon.label=GitHub Closed
+uda.githubmilestone.type=string
+uda.githubmilestone.label=Github Milestone
+uda.githubrepo.type=string
+uda.githubrepo.label=Github Repo Slug
+uda.githuburl.type=string
+uda.githuburl.label=Github URL
+uda.githubtype.type=string
+uda.githubtype.label=Github Type
+uda.githubnumber.type=numeric
+uda.githubnumber.label=Github Issue/PR #
+uda.githubuser.type=string
+uda.githubuser.label=Github User
+uda.githubnamespace.type=string
+uda.githubnamespace.label=Github Namespace
+uda.githubstate.type=string
+uda.githubstate.label=GitHub State
+uda.githubdraft.type=numeric
+uda.githubdraft.label=GitHub Draft
+# END Bugwarrior UDAs
+# Bugwarrior UDAs
+uda.nextclouddeckauthor.type=string
+uda.nextclouddeckauthor.label=Nextcloud Deck Issue Author
+uda.nextclouddeckboardid.type=numeric
+uda.nextclouddeckboardid.label=Nextcloud Deck Board ID
+uda.nextclouddeckboardtitle.type=string
+uda.nextclouddeckboardtitle.label=Nextcloud Deck Board Title
+uda.nextclouddeckstackid.type=numeric
+uda.nextclouddeckstackid.label=Nextcloud Deck Stack ID
+uda.nextclouddeckstacktitle.type=string
+uda.nextclouddeckstacktitle.label=Nextcloud Deck Stack Title
+uda.nextclouddeckcardid.type=numeric
+uda.nextclouddeckcardid.label=Nextcloud Deck Card ID
+uda.nextclouddeckcardtitle.type=string
+uda.nextclouddeckcardtitle.label=Nextcloud Deck Card Title
+uda.nextclouddeckdescription.type=string
+uda.nextclouddeckdescription.label=Nextcloud Deck Card Description
+uda.nextclouddeckorder.type=numeric
+uda.nextclouddeckorder.label=Nextcloud Deck Order
+uda.nextclouddeckassignee.type=string
+uda.nextclouddeckassignee.label=Nextcloud Deck Assignee(s)
+# END Bugwarrior UDAs
