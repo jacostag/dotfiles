@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Exit immediately if a command exits with a non-zero status.
+set -e
+query=$(task simple rc.verbose: | walker -d -f -k -p "Tasks" 2>/dev/null)
+[ -n "${query}" ] && task start "${query}" &
