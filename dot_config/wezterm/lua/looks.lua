@@ -64,11 +64,6 @@ M.apply_to_config = function(c)
 	c.webgpu_power_preference = "HighPerformance"
 	c.xcursor_theme = "Adwaita"
 	c.switch_to_last_active_tab_when_closing_tab = true
-	c.unix_domains = {
-		{
-			name = "unix",
-		},
-	}
 	c.inactive_pane_hsb = {
 		brightness = 0.3,
 	}

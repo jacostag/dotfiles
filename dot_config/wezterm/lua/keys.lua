@@ -17,7 +17,6 @@ M.general = {
 	{ key = "P", mods = "CTRL", action = act.ActivateCommandPalette },
 	{ key = "W", mods = "CTRL", action = wez.action.CloseCurrentTab({ confirm = true }) },
 	{ key = "q", mods = "CMD", action = act.QuitApplication },
-	-- CTRL-SHIFT-l activates the debug overlay
 	-- { key = "D", mods = "CTRL", action = wez.action.ShowDebugOverlay },
 }
 
@@ -34,6 +33,7 @@ M.personal = {
 	{ key = "v", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
 	{ key = "/", action = act.ShowLauncherArgs({ flags = "FUZZY|TABS" }) }, -- fzf navigate tabs
 	{ key = "p", mods = "CTRL", action = act.PaneSelect({ alphabet = "neioarst", mode = "Activate" }) }, -- move between panes
+	-- { key = "d", action = act.DetachDomain({ domai = "CurrentPaneDomain" }) },
 	-- { key = "j", action = act.Search("CurrentSelectionOrEmptyString") },
 
 	{ --rename tab, only visible for inactive tabs (tabline)

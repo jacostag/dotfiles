@@ -1,5 +1,7 @@
 local wez = require("wezterm")
 local scheme = wez.color.get_builtin_schemes()["Catppuccin Mocha"]
+local smart_workspace = wez.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm")
+local quick_domains = wez.plugin.require("https://github.com/DavidRR-F/quick_domains.wezterm")
 
 local M = {}
 
@@ -76,6 +78,12 @@ M.tabline = {
 				"workspace",
 				icon = "",
 				padding = { left = 0, right = 1 },
+				fmt = function(workspace, window)
+					if window:active_key_table() == "personal" then
+						return workspace .. " " .. "🟡"
+					end
+					return workspace
+				end,
 			},
 		},
 		tabline_c = { "domain" },
@@ -86,7 +94,7 @@ M.tabline = {
 			"process",
 			{ "zoomed", padding = 0 },
 		},
-		tab_inactive = { "index", { "tab", padding = { left = 0, right = 1 } }, "output" },
+		tab_inactive = { "index", { "tab", padding = { left = 0, right = 1 } }, "process", "output" },
 		tabline_x = {},
 		tabline_y = {},
 		tabline_z = {},
@@ -224,14 +232,5 @@ M.quick_domains = {
 		},
 	},
 }
-
-M.quick_domains.formatter = function(icon, name, label)
-	return wez.format({
-		{ Attribute = { Italic = true } },
-		{ Foreground = { AnsiColor = "Fuchsia" } },
-		{ Background = { Color = "blue" } },
-		{ Text = icon .. " " .. name .. ": " .. label },
-	})
-end
 
 return M
