@@ -18,12 +18,12 @@ c.disable_default_key_bindings = true
 c.enable_wayland = true
 c.keys = keys.general
 c.key_tables = { personal = keys.personal }
-c.default_domain = "Unix"
-c.unix_domains = {
-	{
-		name = "Unix",
-	},
-}
+-- c.default_domain = "Unix"
+-- c.unix_domains = {
+-- 	{
+-- 		name = "Unix",
+-- 	},
+-- }
 
 wez.on("gui-startup", function(cmd)
 	-- allow `wezterm start -- something` to affect what we spawn
@@ -36,15 +36,16 @@ wez.on("gui-startup", function(cmd)
 	local tab, build_pane, window = mux.spawn_window({
 		workspace = "home",
 		cwd = "/home/gosz/",
-		domain = { DomainName = "Unix" },
-		cmd = "eza --icons=always --color=always -snewest",
+		-- domain = { DomainName = "Unix" },
 	})
-	local tab, pane, window = mux.spawn_window({
+	build_pane:send_text("eza --icons=always --color=always -snewest\n")
+	local tab, build_pane, window = mux.spawn_window({
 		workspace = "work",
 		cwd = "/home/gosz/work/",
-		domain = { DomainName = "Unix" },
-		cmd = "eza --icons=always --color=always -snewest",
+		-- domain = { DomainName = "Unix" },
+		-- cmd = "eza --icons=always --color=always -snewest",
 	})
+	build_pane:send_text("nvim\n")
 	-- We want to startup in the home workspace
 	mux.set_active_workspace("home")
 end)
