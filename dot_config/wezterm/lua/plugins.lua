@@ -79,8 +79,8 @@ M.tabline = {
 				icon = "",
 				padding = { left = 0, right = 1 },
 				fmt = function(workspace, window)
-					if window:active_key_table() == "personal" then
-						return workspace .. " " .. "🟡"
+					if window:active_key_table() == "personal" then -- my key table is called personal, I no longer use leader key
+						return workspace .. " " .. "🟡" -- The icon will appear on "command" mode, "waiting" for the next key press
 					end
 					return workspace
 				end,
