@@ -33,7 +33,7 @@ M.personal = {
 	{ key = "v", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
 	{ key = "/", action = act.ShowLauncherArgs({ flags = "FUZZY|TABS" }) }, -- fzf navigate tabs
 	{ key = "p", mods = "CTRL", action = act.PaneSelect({ alphabet = "neioarst", mode = "Activate" }) }, -- move between panes
-	-- { key = "d", action = act.DetachDomain({ domai = "CurrentPaneDomain" }) },
+	-- { key = "d", action = act.domain:detach() },
 	-- { key = "j", action = act.Search("CurrentSelectionOrEmptyString") },
 
 	{ --rename tab, only visible for inactive tabs (tabline)
