@@ -1,0 +1,11 @@
+[common]
+# Whether to use ANSI color in output
+color = true
+
+
+[commands.tui]
+media_viewer = "feh"
+color = 256
+#media_viewer = "kitty +kitten icat"
+#media_viewer = "wezterm imgcat"
+#color = 16777216
