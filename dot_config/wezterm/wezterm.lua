@@ -72,6 +72,58 @@ wez.on("bell", function(window, pane)
 	window:toast_notification("Wezterm", "Bell on: " .. pane:get_domain_name() .. pane:get_title(), nil, 50)
 end)
 
+-- on window focus change, save the lines as Text
+-- local io = require("io")
+-- local os = require("os")
+
+-- wez.on("something", function(window, pane)
+-- 	wez.log_info("the bell was rung in pane " .. pane:pane_id() .. "!")
+-- 	window:toast_notification("Wezterm", "Bell on: " .. pane:get_domain_name() .. pane:get_title(), nil, 50)
+-- local text = pane:get_lines_as_text(pane:get_dimensions().scrollback_rows)
+-- local name = os.tmpname()
+-- local f = io.open(name, "w+")
+-- f:write(text)
+-- f:flush()
+-- f:close()
+-- window:toast_notification("window-focus-change pane" .. pane:pane_id() .. "window" .. window:window_id() .. "file")
+-- end)
+
+local act = wez.action
+local name = os.tmpname()
+local f = io.open(name, "w+")
+wez.on("trigger-vim-with-scrollback", function(window, pane)
+	window:toast_notification("Wezterm", "trigger nvim with scrollback")
+	-- Retrieve the text from the pane
+	local text = pane:get_lines_as_text(pane:get_dimensions().scrollback_rows)
+
+	-- Create a temporary file to pass to vim
+	f:write(text)
+	f:flush()
+	f:close()
+
+	-- Open a new window running vim and tell it to open the file
+	window:perform_action(
+		act.SpawnCommandInNewWindow({
+			args = { "nvim", name },
+		}),
+		pane
+	)
+
+	wez.on("window-focus-changed", function(window, pane)
+		window:toast_notification("Wezterm", "window-focus-changed")
+		wez.log_info("the focus state of ", window:window_id(), " changed to ", window:is_focused())
+	end)
+
+	-- Wait "enough" time for vim to read the file before we remove it.
+	-- The window creation and process spawn are asynchronous wrt. running
+	-- this script and are not awaitable, so we just pick a number.
+	--
+	-- Note: We don't strictly need to remove this file, but it is nice
+	-- to avoid cluttering up the temporary directory.
+	wez.sleep_ms(1000)
+	os.remove(name)
+end)
+
 -- plugins
 
 quick_domains.formatter = function(icon, name, label)
