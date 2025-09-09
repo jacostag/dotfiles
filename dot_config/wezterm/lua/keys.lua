@@ -16,6 +16,7 @@ M.general = {
 	{ key = "V", mods = "CTRL", action = act.PasteFrom("Clipboard") }, -- ctrl + shift + v for paste
 	{ key = "P", mods = "CTRL", action = act.ActivateCommandPalette },
 	{ key = "W", mods = "CTRL", action = wez.action.CloseCurrentTab({ confirm = true }) },
+	{ key = "k", mods = "CMD", action = act.SendString("yes ' ' | head -n 100\n") }, -- paste with cmd/super/win +v
 	-- { key = "D", mods = "CTRL", action = wez.action.ShowDebugOverlay },
 }
 
