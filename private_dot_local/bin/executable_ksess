@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+
+export FZF_DEFAULT_OPTS='
+--height=20%
+--margin=1
+--info=inline
+--padding=1
+--reverse
+--border
+--prompt="SESSION > "
+--preview="bat {1}"'
+
+session=$(ls -l ~/.config/kitty/*.session | cut -d ' ' -f 10 | fzf)
+[ $? -eq 0 ] && kitten @ action goto_session "$session"
