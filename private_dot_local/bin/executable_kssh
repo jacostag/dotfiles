@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+
+export FZF_DEFAULT_OPTS='
+--height=20%
+--margin=1
+--info=inline
+--padding=1
+--reverse
+--border
+--prompt="SSH > "'
+# --preview="awk -v HOST={} -f ~/.local/bin/host2conf.awk ~/.ssh/config"'
+
+host=$(rg '^[[:space:]]*Host[[:space:]]' ~/.ssh/config | cut -d ' ' -f 2 | fzf)
+[ $? -eq 0 ] && echo "Connecting to $host" && kitten @ launch --type=tab --tab-title="$host" ssh "$host"
